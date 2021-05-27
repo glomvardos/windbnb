@@ -37,6 +37,6 @@ export const Grid = styled.div`
   margin: 0 auto;
   max-width: 1300px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
   column-gap: 3rem;
 `

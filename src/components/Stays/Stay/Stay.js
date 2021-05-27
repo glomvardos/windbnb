@@ -10,17 +10,29 @@ import {
 } from './stylesStay'
 
 const Stay = props => {
+  const isSuperHost = props.superHost
+
+  let availableBeds
+  if (props.beds === 1) {
+    availableBeds = 'bed'
+  }
+  if (props.beds > 1) {
+    availableBeds = 'beds'
+  }
+
   return (
     <StayContainer>
       <ImgWrapper>
         <RoomImg src={props.photo} />
       </ImgWrapper>
       <RoomInfoContainer>
-        <SuperHost>{props.superHost}super host</SuperHost>
+        {isSuperHost && <SuperHost>{props.superHost}super host</SuperHost>}
         <RoomDetails>
-          {props.type} {props.beds}
+          {props.type} {props.beds} {props.beds !== 0 ? availableBeds : ''}
         </RoomDetails>
-        <RoomRating>{props.rating}</RoomRating>
+        <RoomRating>
+          <i className='fas fa-star fa-lg'></i> {props.rating.toFixed(2)}
+        </RoomRating>
       </RoomInfoContainer>
       <SubTitle>{props.title}</SubTitle>
     </StayContainer>

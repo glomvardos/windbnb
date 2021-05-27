@@ -1,8 +1,8 @@
 import { Button, Location, Guests, SearchIcon } from './stylesSearchBar'
 
-const SearchBar = () => {
+const SearchBar = props => {
   return (
-    <Button>
+    <Button onClick={props.onShowModal}>
       <Location>
         <p>Helsinki, Finland</p>
       </Location>

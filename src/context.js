@@ -4,6 +4,7 @@ const context = createContext()
 
 const ContextProvider = ({ children }) => {
   const [stays, setStays] = useState([])
+  const [showModal, setShowModal] = useState(false)
 
   const fetchStays = async () => {
     const response = await fetch(
@@ -22,7 +23,13 @@ const ContextProvider = ({ children }) => {
     fetchStays()
   }, [])
 
-  return <context.Provider value={{ stays }}>{children}</context.Provider>
+  const showModalHandler = () => {
+    setShowModal(prevState => !prevState)
+  }
+
+  return (
+    <context.Provider value={{ stays, showModal, showModalHandler }}>{children}</context.Provider>
+  )
 }
 
 export { context, ContextProvider }
