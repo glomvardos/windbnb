@@ -60,7 +60,7 @@ const ContextProvider = ({ children }) => {
     }
 
     const filteredSearch = stays.filter(
-      stay => stay.city === receivedData.city && stay.maxGuests <= receivedData.maxGuests
+      stay => stay.city === receivedData.city && stay.maxGuests >= receivedData.maxGuests
     )
 
     setFilteredStays(filteredSearch)
