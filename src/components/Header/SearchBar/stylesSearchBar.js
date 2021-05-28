@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 export const Button = styled.button`
+  background-color: transparent;
   width: 300px;
   display: flex;
   justify-content: space-between;
