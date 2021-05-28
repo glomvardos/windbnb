@@ -19,6 +19,15 @@ export const TopContainer = styled.div`
 
     p {
       font-size: 1.4rem;
+      cursor: default;
+    }
+
+    i {
+      transition: all 200ms;
+    }
+
+    i:hover {
+      color: rgba(235, 87, 87, 0.9);
     }
   }
 `
@@ -68,5 +77,15 @@ export const Button = styled.button`
     margin: 0;
     align-self: flex-start;
     grid-row-start: 1;
+    transition: all 200ms;
+
+    &:hover {
+      opacity: 0.9;
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+      background-color: #ccc;
+    }
   }
 `

@@ -34,7 +34,7 @@ const Stay = props => {
           <i className='fas fa-star fa-lg'></i> {props.rating.toFixed(2)}
         </RoomRating>
       </RoomInfoContainer>
-      <SubTitle>{props.title}</SubTitle>
+      <SubTitle superHost={props.superHost}>{props.title}</SubTitle>
     </StayContainer>
   )
 }

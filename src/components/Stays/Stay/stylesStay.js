@@ -81,5 +81,6 @@ export const SubTitle = styled.h3`
   @media (min-width: 530px) {
     font-size: 1.7rem;
     line-height: 2rem;
+    margin-top: ${({ superHost }) => (superHost ? '-0.8rem' : '0')};
   }
 `

@@ -1,4 +1,15 @@
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
+
+const slideDown = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(-3rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+`
 
 export const StyledBackDrop = styled.div`
   position: fixed;
@@ -20,6 +31,7 @@ export const StyledModal = styled.div`
   padding: 1.5rem 1.5rem 3rem 1.5rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
   z-index: 30;
+  animation: ${slideDown} 400ms ease-out forwards;
 
   @media (min-width: 600px) {
     height: 45vh;

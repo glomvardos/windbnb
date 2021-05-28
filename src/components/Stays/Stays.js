@@ -1,12 +1,14 @@
 import { useContext } from 'react'
 import Stay from './Stay/Stay'
+import Spinner from '../UI/Spinner/Spinner'
+import Error from '../UI/Error/Error'
 import { context } from '../../context'
-import { Main, Container, Title, NumStays, Grid } from './stylesStays'
+import { Main, Container, Title, NumStays, Grid, NoResults } from './stylesStays'
 
 const Stays = () => {
-  const { stays } = useContext(context)
+  const { filteredStays, isLoading, error } = useContext(context)
 
-  const displayStays = stays.map(stay => (
+  const displayStays = filteredStays.map(stay => (
     <Stay
       key={stay.id}
       photo={stay.photo}
@@ -18,13 +20,41 @@ const Stays = () => {
     />
   ))
 
+  let numOfStays
+  if (filteredStays.length === 1) {
+    numOfStays = 'stay'
+  }
+
+  if (filteredStays.length > 1) {
+    numOfStays = 'stays'
+  }
+
+  if (isLoading) {
+    return (
+      <Main>
+        <Spinner />
+      </Main>
+    )
+  }
+
+  if (error) {
+    return (
+      <Main>
+        <Error />
+      </Main>
+    )
+  }
+
   return (
     <Main>
       <Container>
         <Title>Stays in Finland</Title>
-        <NumStays>12+ stays</NumStays>
+        <NumStays>
+          {filteredStays.length === 0 ? '0 stays' : `${filteredStays.length} ${numOfStays}`}
+        </NumStays>
       </Container>
       <Grid>{displayStays}</Grid>
+      {displayStays.length === 0 && <NoResults>No results found!</NoResults>}
     </Main>
   )
 }

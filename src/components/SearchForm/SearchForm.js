@@ -1,8 +1,9 @@
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import Modal from '../UI/Modal/Modal'
 import Input from '../UI/Input/Input'
 import SearchLocation from './SearchLocation/SearchLocation'
 import AddGuests from './AddGuests/AddGuests'
+import { context } from '../../context'
 import { TopContainer, Container, Form, Button } from './stylesSearchForm'
 
 const LOCATIONS = [
@@ -13,6 +14,7 @@ const LOCATIONS = [
 ]
 
 const SearchForm = props => {
+  const { onSearchHandler, showModalHandler } = useContext(context)
   const [location, setLocation] = useState('')
   const [isLocationFocus, setIsLocationFocus] = useState(false)
 
@@ -29,6 +31,14 @@ const SearchForm = props => {
       setLocation={setLocation}
     />
   ))
+
+  const locationIsInvalid = location.trim() === ''
+  const addGuestsIsInvalid = totalGuests === 0
+  let formIsValid = false
+
+  if (!locationIsInvalid && !addGuestsIsInvalid) {
+    formIsValid = true
+  }
 
   const inputLocationHandler = e => {
     setLocation(e.target.value)
@@ -48,6 +58,12 @@ const SearchForm = props => {
     setIsLocationFocus(false)
   }
 
+  const onSubmitHandler = e => {
+    e.preventDefault()
+    onSearchHandler({ city: location, maxGuests: totalGuests })
+    showModalHandler()
+  }
+
   let guests
   if (totalGuests === 1) {
     guests = 'guest'
@@ -62,7 +78,7 @@ const SearchForm = props => {
         <p>Edit your search</p>
         <i className='fas fa-times fa-2x' onClick={props.onShowModal}></i>
       </TopContainer>
-      <Form>
+      <Form onSubmit={onSubmitHandler}>
         <Input
           area='location'
           id='location'
@@ -96,7 +112,7 @@ const SearchForm = props => {
           </Container>
         )}
 
-        <Button>
+        <Button type='submit' disabled={!formIsValid}>
           <i className='fas fa-search'></i>Search
         </Button>
       </Form>

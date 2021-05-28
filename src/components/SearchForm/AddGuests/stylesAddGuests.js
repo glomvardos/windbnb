@@ -43,4 +43,15 @@ export const BtnContainer = styled.div`
     line-height: 1.8rem;
     font-weight: 700;
   }
+
+  @media (min-width: 600px) {
+    button {
+      transition: all 200ms;
+    }
+    button:hover {
+      border: 1px solid rgba(235, 87, 87, 0.9);
+      background-color: rgba(235, 87, 87, 0.9);
+      color: #fff;
+    }
+  }
 `
