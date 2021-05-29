@@ -34,7 +34,7 @@ export const StyledModal = styled.div`
   animation: ${slideDown} 400ms ease-out forwards;
 
   @media (min-width: 600px) {
-    height: 45vh;
+    height: 50vh;
     padding: 3rem 3rem 3rem 3rem;
   }
 `
