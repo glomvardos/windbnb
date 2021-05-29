@@ -26,7 +26,7 @@ export const StyledModal = styled.div`
   top: 0;
   left: 0;
   width: 100%;
-  height: 70vh;
+  height: 80vh;
   background-color: #ffffff;
   padding: 1.5rem 1.5rem 3rem 1.5rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
@@ -34,7 +34,11 @@ export const StyledModal = styled.div`
   animation: ${slideDown} 400ms ease-out forwards;
 
   @media (min-width: 600px) {
-    height: 50vh;
+    height: 45vh;
     padding: 3rem 3rem 3rem 3rem;
+  }
+
+  @media (min-width: 600px) and (max-height: 825px) {
+    height: 52vh;
   }
 `
